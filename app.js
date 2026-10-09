@@ -112,6 +112,13 @@ if (typeof document !== "undefined") {
       const key = `${i}:${rank}`, offset = overlaps.get(key) || 0; overlaps.set(key,offset+1);
       const button = icon(c,"chart-icon"); if (selected && selected !== c.id) button.classList.add("dim");
       button.style.left = `${x(data.announcements[i].date)+offset*36}px`; button.style.top = `${y(rank)}px`;
+      if (i === data.announcements.length - 1) {
+        const name = document.createElement("span");
+        name.className = "chart-name";
+        name.textContent = c.name;
+        if (x(data.announcements[i].date) > width / 2) name.classList.add("chart-name-left");
+        button.append(name);
+      }
       button.setAttribute("aria-label",`${info(c)}\n${data.announcements[i].label}：${rank}位`); chart.append(button);
     }
     $("chart-count").textContent = `${count}キャラ表示`;
