@@ -1,0 +1,1218 @@
+{
+  "event": {
+    "start": "2026-10-01T10:00:00+09:00",
+    "end": "2026-11-30T23:59:00+09:00",
+    "source": "https://p.eagate.573.jp/game/popn/suki/index.html"
+  },
+  "announcements": [
+    {
+      "date": "2026-10-09T00:00:00+09:00",
+      "label": "第1回中間発表",
+      "source": "https://x.com/popn_team/status/2108501274308272404",
+      "expectedCount": 300,
+      "status": "verified",
+      "ranks": [
+        {
+          "id": ".uk7ze0",
+          "rank": 1
+        },
+        {
+          "id": ".uivvfs",
+          "rank": 2
+        },
+        {
+          "id": ".uk7mqw",
+          "rank": 3
+        },
+        {
+          "id": ".uiwb8o",
+          "rank": 4
+        },
+        {
+          "id": ".ujsvs8",
+          "rank": 5
+        },
+        {
+          "id": ".uiweeg",
+          "rank": 6
+        },
+        {
+          "id": ".uk1814",
+          "rank": 7
+        },
+        {
+          "id": ".uk8f6w",
+          "rank": 8
+        },
+        {
+          "id": ".ujpt60",
+          "rank": 9
+        },
+        {
+          "id": ".uivsa0",
+          "rank": 10
+        },
+        {
+          "id": ".uj7q3s",
+          "rank": 11
+        },
+        {
+          "id": ".uizap4",
+          "rank": 12
+        },
+        {
+          "id": ".ukfmco",
+          "rank": 13
+        },
+        {
+          "id": ".uivlyg",
+          "rank": 14
+        },
+        {
+          "id": ".ukam7c",
+          "rank": 15
+        },
+        {
+          "id": ".ukg5bc",
+          "rank": 16
+        },
+        {
+          "id": ".uiv65k",
+          "rank": 17
+        },
+        {
+          "id": ".uiwnvs",
+          "rank": 18
+        },
+        {
+          "id": ".uiwkq0",
+          "rank": 19
+        },
+        {
+          "id": ".ujgxyg",
+          "rank": 20
+        },
+        {
+          "id": ".uj3c2w",
+          "rank": 21
+        },
+        {
+          "id": ".ujf9wo",
+          "rank": 22
+        },
+        {
+          "id": ".ujvffs",
+          "rank": 23
+        },
+        {
+          "id": ".uk0lwo",
+          "rank": 24
+        },
+        {
+          "id": ".ukgbmw",
+          "rank": 25
+        },
+        {
+          "id": ".uk8c14",
+          "rank": 26
+        },
+        {
+          "id": ".uk4dt4",
+          "rank": 27
+        },
+        {
+          "id": ".ujeb54",
+          "rank": 28
+        },
+        {
+          "id": ".uivfmw",
+          "rank": 29
+        },
+        {
+          "id": ".uja9rc",
+          "rank": 30
+        },
+        {
+          "id": ".ukbht4",
+          "rank": 31
+        },
+        {
+          "id": ".ukbrag",
+          "rank": 32
+        },
+        {
+          "id": ".ujqfag",
+          "rank": 33
+        },
+        {
+          "id": ".uk3roo",
+          "rank": 34
+        },
+        {
+          "id": ".uiv9bc",
+          "rank": 35
+        },
+        {
+          "id": ".uj6ep4",
+          "rank": 36
+        },
+        {
+          "id": ".uiw4x4",
+          "rank": 37
+        },
+        {
+          "id": ".ujk3qg",
+          "rank": 38
+        },
+        {
+          "id": ".ujjhm0",
+          "rank": 39
+        },
+        {
+          "id": ".uk6xgo",
+          "rank": 40
+        },
+        {
+          "id": ".ukghyg",
+          "rank": 41
+        },
+        {
+          "id": ".ukcjqg",
+          "rank": 42
+        },
+        {
+          "id": ".uis6p4",
+          "rank": 43
+        },
+        {
+          "id": ".ukmdpk",
+          "rank": 44
+        },
+        {
+          "id": ".ujfz6w",
+          "rank": 45
+        },
+        {
+          "id": ".ujsfzc",
+          "rank": 46
+        },
+        {
+          "id": ".uklbs8",
+          "rank": 47
+        },
+        {
+          "id": ".uiw1rc",
+          "rank": 48
+        },
+        {
+          "id": ".uk1eco",
+          "rank": 49
+        },
+        {
+          "id": ".ukdotk",
+          "rank": 50
+        },
+        {
+          "id": ".uiuqco",
+          "rank": 51
+        },
+        {
+          "id": ".uj23u0",
+          "rank": 52
+        },
+        {
+          "id": ".ujhalk",
+          "rank": 53
+        },
+        {
+          "id": ".ujnfu0",
+          "rank": 54
+        },
+        {
+          "id": ".ukdfc8",
+          "rank": 55
+        },
+        {
+          "id": ".ukm488",
+          "rank": 56
+        },
+        {
+          "id": ".uk8oo8",
+          "rank": 57
+        },
+        {
+          "id": ".ukg25k",
+          "rank": 58
+        },
+        {
+          "id": ".ujzwmg",
+          "rank": 59
+        },
+        {
+          "id": ".ujbunc",
+          "rank": 60
+        },
+        {
+          "id": ".ujnpbc",
+          "rank": 61
+        },
+        {
+          "id": ".ukenl4",
+          "rank": 62
+        },
+        {
+          "id": ".uka6eg",
+          "rank": 63
+        },
+        {
+          "id": ".uk7d9k",
+          "rank": 64
+        },
+        {
+          "id": ".ujq5t4",
+          "rank": 65
+        },
+        {
+          "id": ".uka02w",
+          "rank": 66
+        },
+        {
+          "id": ".ujbrhk",
+          "rank": 67
+        },
+        {
+          "id": ".uk29yg",
+          "rank": 68
+        },
+        {
+          "id": ".ujcwko",
+          "rank": 69
+        },
+        {
+          "id": ".ukgeso",
+          "rank": 70
+        },
+        {
+          "id": ".uk8lig",
+          "rank": 71
+        },
+        {
+          "id": ".uj5fxk",
+          "rank": 72
+        },
+        {
+          "id": ".uk82js",
+          "rank": 73
+        },
+        {
+          "id": ".uiwxd4",
+          "rank": 74
+        },
+        {
+          "id": ".uk686g",
+          "rank": 75
+        },
+        {
+          "id": ".ujapk8",
+          "rank": 76
+        },
+        {
+          "id": ".ukczjc",
+          "rank": 77
+        },
+        {
+          "id": ".ukfpig",
+          "rank": 78
+        },
+        {
+          "id": ".ukmajs",
+          "rank": 79
+        },
+        {
+          "id": ".uiutig",
+          "rank": 80
+        },
+        {
+          "id": ".uk4k4o",
+          "rank": 81
+        },
+        {
+          "id": ".uiu7e0",
+          "rank": 82
+        },
+        {
+          "id": ".uixmnc",
+          "rank": 83
+        },
+        {
+          "id": ".ujlrs8",
+          "rank": 84
+        },
+        {
+          "id": ".ujifoo",
+          "rank": 85
+        },
+        {
+          "id": ".ukb560",
+          "rank": 86
+        },
+        {
+          "id": ".ujy8ko",
+          "rank": 87
+        },
+        {
+          "id": ".uiz4dk",
+          "rank": 88
+        },
+        {
+          "id": ".uklofc",
+          "rank": 89
+        },
+        {
+          "id": ".uiyf3c",
+          "rank": 90
+        },
+        {
+          "id": ".uketwo",
+          "rank": 91
+        },
+        {
+          "id": ".ukkjc8",
+          "rank": 92
+        },
+        {
+          "id": ".ukb208",
+          "rank": 93
+        },
+        {
+          "id": ".ujhwq0",
+          "rank": 94
+        },
+        {
+          "id": ".ujdyi0",
+          "rank": 95
+        },
+        {
+          "id": ".uj5crs",
+          "rank": 96
+        },
+        {
+          "id": ".uk0s88",
+          "rank": 97
+        },
+        {
+          "id": ".ujd620",
+          "rank": 98
+        },
+        {
+          "id": ".uiuwo8",
+          "rank": 99
+        },
+        {
+          "id": ".ukm7e0",
+          "rank": 100
+        },
+        {
+          "id": ".ukje94",
+          "rank": 101
+        },
+        {
+          "id": ".uk91bc",
+          "rank": 102
+        },
+        {
+          "id": ".uje4tk",
+          "rank": 103
+        },
+        {
+          "id": ".ujhdrc",
+          "rank": 104
+        },
+        {
+          "id": ".ukh42w",
+          "rank": 105
+        },
+        {
+          "id": ".ujg2co",
+          "rank": 106
+        },
+        {
+          "id": ".uj9tyg",
+          "rank": 107
+        },
+        {
+          "id": ".uk11pk",
+          "rank": 108
+        },
+        {
+          "id": ".ujqrxk",
+          "rank": 109
+        },
+        {
+          "id": ".ujqc4o",
+          "rank": 110
+        },
+        {
+          "id": ".uj152g",
+          "rank": 111
+        },
+        {
+          "id": ".ujavvs",
+          "rank": 112
+        },
+        {
+          "id": ".ujkzc8",
+          "rank": 113
+        },
+        {
+          "id": ".ujx9t4",
+          "rank": 114
+        },
+        {
+          "id": ".uji31k",
+          "rank": 115
+        },
+        {
+          "id": ".ukjx7s",
+          "rank": 116
+        },
+        {
+          "id": ".ukbenc",
+          "rank": 117
+        },
+        {
+          "id": ".uj7t9k",
+          "rank": 118
+        },
+        {
+          "id": ".uk26so",
+          "rank": 119
+        },
+        {
+          "id": ".uk94h4",
+          "rank": 120
+        },
+        {
+          "id": ".uj06aw",
+          "rank": 121
+        },
+        {
+          "id": ".uk9aso",
+          "rank": 122
+        },
+        {
+          "id": ".ujrtuw",
+          "rank": 123
+        },
+        {
+          "id": ".ujds6g",
+          "rank": 124
+        },
+        {
+          "id": ".uj0yqw",
+          "rank": 125
+        },
+        {
+          "id": ".ujuzmw",
+          "rank": 126
+        },
+        {
+          "id": ".ujt23s",
+          "rank": 127
+        },
+        {
+          "id": ".uiuzu0",
+          "rank": 128
+        },
+        {
+          "id": ".uj8c88",
+          "rank": 129
+        },
+        {
+          "id": ".ujd2w8",
+          "rank": 130
+        },
+        {
+          "id": ".ukfcvc",
+          "rank": 131
+        },
+        {
+          "id": ".ukcmw8",
+          "rank": 132
+        },
+        {
+          "id": ".uk4wrs",
+          "rank": 133
+        },
+        {
+          "id": ".ukli3s",
+          "rank": 134
+        },
+        {
+          "id": ".ukk0dk",
+          "rank": 135
+        },
+        {
+          "id": ".uiyuw8",
+          "rank": 136
+        },
+        {
+          "id": ".ukf088",
+          "rank": 137
+        },
+        {
+          "id": ".ujhtk8",
+          "rank": 138
+        },
+        {
+          "id": ".ukmqco",
+          "rank": 139
+        },
+        {
+          "id": ".uiviso",
+          "rank": 140
+        },
+        {
+          "id": ".ujfppk",
+          "rank": 141
+        },
+        {
+          "id": ".ukh0x4",
+          "rank": 142
+        },
+        {
+          "id": ".uj7my0",
+          "rank": 143
+        },
+        {
+          "id": ".uk3uug",
+          "rank": 144
+        },
+        {
+          "id": ".uk1qzs",
+          "rank": 145
+        },
+        {
+          "id": ".ukhjvs",
+          "rank": 146
+        },
+        {
+          "id": ".uk73s8",
+          "rank": 147
+        },
+        {
+          "id": ".uj3ieg",
+          "rank": 148
+        },
+        {
+          "id": ".uiru20",
+          "rank": 149
+        },
+        {
+          "id": ".uj5j3c",
+          "rank": 150
+        },
+        {
+          "id": ".ujuwh4",
+          "rank": 151
+        },
+        {
+          "id": ".uk0cfc",
+          "rank": 152
+        },
+        {
+          "id": ".ukbkyw",
+          "rank": 153
+        },
+        {
+          "id": ".uj1uco",
+          "rank": 154
+        },
+        {
+          "id": ".ukjkko",
+          "rank": 155
+        },
+        {
+          "id": ".ukgxrc",
+          "rank": 156
+        },
+        {
+          "id": ".uitxwo",
+          "rank": 157
+        },
+        {
+          "id": ".ujyrjc",
+          "rank": 158
+        },
+        {
+          "id": ".ujyodk",
+          "rank": 159
+        },
+        {
+          "id": ".uk2sx4",
+          "rank": 160
+        },
+        {
+          "id": ".ujp71k",
+          "rank": 161
+        },
+        {
+          "id": ".ukex2g",
+          "rank": 162
+        },
+        {
+          "id": ".ujguso",
+          "rank": 163
+        },
+        {
+          "id": ".ujpzhk",
+          "rank": 164
+        },
+        {
+          "id": ".uiuajs",
+          "rank": 165
+        },
+        {
+          "id": ".ujs06g",
+          "rank": 166
+        },
+        {
+          "id": ".ukk9uw",
+          "rank": 167
+        },
+        {
+          "id": ".ujwe7c",
+          "rank": 168
+        },
+        {
+          "id": ".uk2w2w",
+          "rank": 169
+        },
+        {
+          "id": ".ujkpuw",
+          "rank": 170
+        },
+        {
+          "id": ".ujfd2g",
+          "rank": 171
+        },
+        {
+          "id": ".ujzzs8",
+          "rank": 172
+        },
+        {
+          "id": ".ujvca0",
+          "rank": 173
+        },
+        {
+          "id": ".ukk3jc",
+          "rank": 174
+        },
+        {
+          "id": ".uk2mlk",
+          "rank": 175
+        },
+        {
+          "id": ".ujudig",
+          "rank": 176
+        },
+        {
+          "id": ".ujjnxk",
+          "rank": 177
+        },
+        {
+          "id": ".ukjqw8",
+          "rank": 178
+        },
+        {
+          "id": ".ujdfjc",
+          "rank": 179
+        },
+        {
+          "id": ".uj47oo",
+          "rank": 180
+        },
+        {
+          "id": ".ujlf54",
+          "rank": 181
+        },
+        {
+          "id": ".ukcdew",
+          "rank": 182
+        },
+        {
+          "id": ".ukiinc",
+          "rank": 183
+        },
+        {
+          "id": ".uj892g",
+          "rank": 184
+        },
+        {
+          "id": ".uj5yw8",
+          "rank": 185
+        },
+        {
+          "id": ".uiudpk",
+          "rank": 186
+        },
+        {
+          "id": ".uiyy20",
+          "rank": 187
+        },
+        {
+          "id": ".ujr7qg",
+          "rank": 188
+        },
+        {
+          "id": ".uj32lk",
+          "rank": 189
+        },
+        {
+          "id": ".uk1b6w",
+          "rank": 190
+        },
+        {
+          "id": ".ujm4fc",
+          "rank": 191
+        },
+        {
+          "id": ".ujr1ew",
+          "rank": 192
+        },
+        {
+          "id": ".uk70mg",
+          "rank": 193
+        },
+        {
+          "id": ".ujqors",
+          "rank": 194
+        },
+        {
+          "id": ".ujxmg8",
+          "rank": 195
+        },
+        {
+          "id": ".ujrqp4",
+          "rank": 196
+        },
+        {
+          "id": ".ujhgx4",
+          "rank": 197
+        },
+        {
+          "id": ".ujkjjc",
+          "rank": 198
+        },
+        {
+          "id": ".ujmaqw",
+          "rank": 199
+        },
+        {
+          "id": ".ujyl7s",
+          "rank": 200
+        },
+        {
+          "id": ".ujcgrs",
+          "rank": 201
+        },
+        {
+          "id": ".ukbug8",
+          "rank": 202
+        },
+        {
+          "id": ".uisvzc",
+          "rank": 203
+        },
+        {
+          "id": ".ujxg4o",
+          "rank": 204
+        },
+        {
+          "id": ".ujspgo",
+          "rank": 205
+        },
+        {
+          "id": ".uk4gyw",
+          "rank": 206
+        },
+        {
+          "id": ".uk4nag",
+          "rank": 207
+        },
+        {
+          "id": ".uk5sdk",
+          "rank": 208
+        },
+        {
+          "id": ".ujivhk",
+          "rank": 209
+        },
+        {
+          "id": ".uk1u5k",
+          "rank": 210
+        },
+        {
+          "id": ".uj2mso",
+          "rank": 211
+        },
+        {
+          "id": ".ukluqw",
+          "rank": 212
+        },
+        {
+          "id": ".uk9ka0",
+          "rank": 213
+        },
+        {
+          "id": ".ujxcyw",
+          "rank": 214
+        },
+        {
+          "id": ".ujx0bs",
+          "rank": 215
+        },
+        {
+          "id": ".ujyi20",
+          "rank": 216
+        },
+        {
+          "id": ".uisz54",
+          "rank": 217
+        },
+        {
+          "id": ".uj1r6w",
+          "rank": 218
+        },
+        {
+          "id": ".uiwu7c",
+          "rank": 219
+        },
+        {
+          "id": ".ukfyzs",
+          "rank": 220
+        },
+        {
+          "id": ".ujxvxk",
+          "rank": 221
+        },
+        {
+          "id": ".uk44bs",
+          "rank": 222
+        },
+        {
+          "id": ".uj26zs",
+          "rank": 223
+        },
+        {
+          "id": ".ukcgko",
+          "rank": 224
+        },
+        {
+          "id": ".ukkg6g",
+          "rank": 225
+        },
+        {
+          "id": ".uj44iw",
+          "rank": 226
+        },
+        {
+          "id": ".uk7jl4",
+          "rank": 227
+        },
+        {
+          "id": ".uk4anc",
+          "rank": 228
+        },
+        {
+          "id": ".ukeqqw",
+          "rank": 229
+        },
+        {
+          "id": ".uk0fl4",
+          "rank": 230
+        },
+        {
+          "id": ".ujk6w8",
+          "rank": 231
+        },
+        {
+          "id": ".ujf6qw",
+          "rank": 232
+        },
+        {
+          "id": ".ujnvmw",
+          "rank": 233
+        },
+        {
+          "id": ".uiyi94",
+          "rank": 234
+        },
+        {
+          "id": ".uj4nhk",
+          "rank": 235
+        },
+        {
+          "id": ".uiv2zs",
+          "rank": 236
+        },
+        {
+          "id": ".ujre20",
+          "rank": 237
+        },
+        {
+          "id": ".uispns",
+          "rank": 238
+        },
+        {
+          "id": ".ujztgo",
+          "rank": 239
+        },
+        {
+          "id": ".ukley0",
+          "rank": 240
+        },
+        {
+          "id": ".uj4tt4",
+          "rank": 241
+        },
+        {
+          "id": ".ujluy0",
+          "rank": 242
+        },
+        {
+          "id": ".ukkmi0",
+          "rank": 243
+        },
+        {
+          "id": ".ujcn3c",
+          "rank": 244
+        },
+        {
+          "id": ".ujvilk",
+          "rank": 245
+        },
+        {
+          "id": ".ujs3c8",
+          "rank": 246
+        },
+        {
+          "id": ".ujsmaw",
+          "rank": 247
+        },
+        {
+          "id": ".uja0a0",
+          "rank": 248
+        },
+        {
+          "id": ".uk1ko8",
+          "rank": 249
+        },
+        {
+          "id": ".ujsyy0",
+          "rank": 250
+        },
+        {
+          "id": ".uk2prc",
+          "rank": 251
+        },
+        {
+          "id": ".ujwx60",
+          "rank": 252
+        },
+        {
+          "id": ".uj4qnc",
+          "rank": 253
+        },
+        {
+          "id": ".ujcdm0",
+          "rank": 254
+        },
+        {
+          "id": ".uizh0o",
+          "rank": 255
+        },
+        {
+          "id": ".ujokx4",
+          "rank": 256
+        },
+        {
+          "id": ".uk61uw",
+          "rank": 257
+        },
+        {
+          "id": ".uk02y0",
+          "rank": 258
+        },
+        {
+          "id": ".ujctew",
+          "rank": 259
+        },
+        {
+          "id": ".ujkmp4",
+          "rank": 260
+        },
+        {
+          "id": ".uj1be0",
+          "rank": 261
+        },
+        {
+          "id": ".uj1ejs",
+          "rank": 262
+        },
+        {
+          "id": ".ukdc6g",
+          "rank": 263
+        },
+        {
+          "id": ".ujpdd4",
+          "rank": 264
+        },
+        {
+          "id": ".uk0p2g",
+          "rank": 265
+        },
+        {
+          "id": ".ujo548",
+          "rank": 266
+        },
+        {
+          "id": ".ujmqjs",
+          "rank": 267
+        },
+        {
+          "id": ".ukd90o",
+          "rank": 268
+        },
+        {
+          "id": ".ukcq20",
+          "rank": 269
+        },
+        {
+          "id": ".ujc7ag",
+          "rank": 270
+        },
+        {
+          "id": ".uk5p7s",
+          "rank": 271
+        },
+        {
+          "id": ".uk14vc",
+          "rank": 272
+        },
+        {
+          "id": ".uj4h60",
+          "rank": 273
+        },
+        {
+          "id": ".ujssmg",
+          "rank": 274
+        },
+        {
+          "id": ".uis9uw",
+          "rank": 275
+        },
+        {
+          "id": ".ujglbc",
+          "rank": 276
+        },
+        {
+          "id": ".uj6220",
+          "rank": 277
+        },
+        {
+          "id": ".uk7pwo",
+          "rank": 278
+        },
+        {
+          "id": ".ujwb1k",
+          "rank": 279
+        },
+        {
+          "id": ".uiu488",
+          "rank": 280
+        },
+        {
+          "id": ".uk9wx4",
+          "rank": 281
+        },
+        {
+          "id": ".uiyoko",
+          "rank": 282
+        },
+        {
+          "id": ".ukh78o",
+          "rank": 283
+        },
+        {
+          "id": ".uiuk14",
+          "rank": 284
+        },
+        {
+          "id": ".uk9nfs",
+          "rank": 285
+        },
+        {
+          "id": ".uizduw",
+          "rank": 286
+        },
+        {
+          "id": ".ukrap4",
+          "rank": 287
+        },
+        {
+          "id": ".ukavoo",
+          "rank": 288
+        },
+        {
+          "id": ".ujkgdk",
+          "rank": 289
+        },
+        {
+          "id": ".ukee3s",
+          "rank": 290
+        },
+        {
+          "id": ".ukasiw",
+          "rank": 291
+        },
+        {
+          "id": ".ujly3s",
+          "rank": 292
+        },
+        {
+          "id": ".ukmgvc",
+          "rank": 293
+        },
+        {
+          "id": ".ujqig8",
+          "rank": 294
+        },
+        {
+          "id": ".ujnm5k",
+          "rank": 295
+        },
+        {
+          "id": ".ujameg",
+          "rank": 296
+        },
+        {
+          "id": ".ukkvzc",
+          "rank": 297
+        },
+        {
+          "id": ".uixd60",
+          "rank": 298
+        },
+        {
+          "id": ".uj8s14",
+          "rank": 299
+        },
+        {
+          "id": ".ujfmjs",
+          "rank": 300
+        }
+      ]
+    }
+  ]
+}

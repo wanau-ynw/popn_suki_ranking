@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#fff9ef">
+  <title>ポップンSUKIキャラグランプリ ランキング発表</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="hero">
+    <h1>ポップンSUKIキャラグランプリ 順位発表</h1>
+    <div class="event">開催期間 <strong>10.01 → 11.30</strong><span>2026年 · 日本時間</span></div>
+    <a href="https://p.eagate.573.jp/game/popn/suki/index.html" target="_blank" rel="noopener">公式イベントサイト ↗</a>
+  </header>
+  <main>
+    <div id="status" class="notice" role="status">キャラクターと順位データを読み込んでいます…</div>
+    <section class="controls" aria-label="表示条件">
+      <label>初登場バージョン<select id="version" disabled><option value="">すべてのバージョン</option></select></label>
+      <label>おひさ<select id="ohisa" disabled><option value="">すべて</option><option value="true">おひさ あり</option><option value="false">おひさ なし</option></select></label>
+      <label>表示する順位帯<select id="band" disabled><option value="1:300" selected>1〜300位すべて</option><option value="1:30">1〜30位</option><option value="31:60">31〜60位</option><option value="61:100">61〜100位</option><option value="101:150">101〜150位</option><option value="151:200">151〜200位</option><option value="201:250">201〜250位</option><option value="251:300">251〜300位</option></select></label>
+      <button id="reset" disabled>条件をリセット</button>
+    </section>
+    <section class="panel" aria-labelledby="chart-title">
+      <div class="section-head"><div><p id="chart-title" class="eyebrow">RANKING TIMELINE</p></div><p id="chart-count"></p></div>
+      <p class="hint">アイコンにカーソルを重ねるとキャラ情報を表示。クリック・タップで選択して、推移を強調できます。</p>
+      <div id="selection" class="selection" aria-live="polite">気になるキャラを選んでみよう。</div>
+      <div class="chart-scroll" tabindex="0" aria-label="順位推移グラフ。縦横にスクロールできます"><div id="chart"></div></div>
+    </section>
+    <section class="panel waiting" aria-labelledby="waiting-title">
+      <div class="section-head"><div><p class="eyebrow">WAITING ROOM</p><h2 id="waiting-title">発表待ち</h2></div><p id="waiting-count"></p></div>
+      <p id="waiting-description" class="hint"></p>
+      <div id="waiting" class="characters"></div>
+      <p id="empty" hidden>この条件に合うキャラクターはいません。</p>
+    </section>
+    <section class="panel about"><h2>このイベントについて</h2><p>SUKIチケットで好きなポップンのオリジナルキャラクターを応援するイベント。上位入賞キャラクターには新曲・新衣装のチャンス！「おひさで賞」は、peace以降の楽曲で担当曲を持っていないキャラクターが対象です。</p><p>このページでは公式の発表順位を記録します。フィルタはグラフとひろばの両方に適用されます。順位帯はグラフだけに適用されます。</p><div id="sources"></div></section>
+  </main>
+  <footer>非公式の順位記録サイトです。キャラクター・画像の権利は各権利者に帰属します。<br>情報に誤りがある場合は、発表日とキャラクター名を添えてサイト管理者へお知らせください。</footer>
+  <div id="tooltip" role="tooltip" hidden></div>
+</body>
+</html>
