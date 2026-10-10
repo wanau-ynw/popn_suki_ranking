@@ -90,7 +90,20 @@ if (typeof document !== "undefined") {
     const ns = "http://www.w3.org/2000/svg", svg = document.createElementNS(ns, "svg"); svg.setAttribute("width", width); svg.setAttribute("height", height); svg.classList.add("chart-svg"); svg.setAttribute("role", "img"); svg.setAttribute("aria-label", `${low}位から${high}位の順位推移。詳細はアイコンを選択して確認できます。`); chart.append(svg);
     function element(tag, attrs, text) { const el = document.createElementNS(ns, tag); for (const [k,v] of Object.entries(attrs)) el.setAttribute(k,v); if (text) el.textContent = text; svg.append(el); return el; }
     const line = (x1,y1,x2,y2,color,dash) => element("line",{x1,y1,x2,y2,stroke:color,"stroke-dasharray":dash || ""});
-    for (let rank = low; rank <= high; rank++) { line(left,y(rank),width-right,y(rank),"#eee8dd"); element("text",{x:20,y:y(rank)+4,fill:"#63716c","font-size":12},`${rank}位`); }
+    const rankAxis = document.createElement("div");
+    rankAxis.className = "rank-axis";
+    rankAxis.style.height = `${height}px`;
+    rankAxis.style.width = `${left - 12}px`;
+    rankAxis.setAttribute("aria-hidden", "true");
+    for (let rank = low; rank <= high; rank++) {
+      line(left,y(rank),width-right,y(rank),"#eee8dd");
+      const label = document.createElement("span");
+      label.className = "rank-label";
+      label.style.top = `${y(rank)}px`;
+      label.textContent = `${rank}位`;
+      rankAxis.append(label);
+    }
+    chart.append(rankAxis);
     const marks = [{date:data.event.start,label:"スタート"},...data.announcements,{date:data.event.end,label:"投票終了"}];
     for (const mark of marks) { line(x(mark.date),top-15,x(mark.date),height-bottom+15,"#d3dcd5","4 5"); element("text",{x:x(mark.date),y:30,"text-anchor":"middle",fill:"#147b7d","font-size":12},formatDate(mark.date)); element("text",{x:x(mark.date),y:50,"text-anchor":"middle",fill:"#596670","font-size":11},mark.label); }
     let count = 0;
