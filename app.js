@@ -103,9 +103,25 @@ if (typeof document !== "undefined") {
       label.textContent = `${rank}位`;
       rankAxis.append(label);
     }
-    chart.append(rankAxis);
+    const timeAxis = document.createElement("div");
+    timeAxis.className = "time-axis";
+    chart.append(timeAxis, rankAxis);
     const marks = [{date:data.event.start,label:"スタート"},...data.announcements,{date:data.event.end,label:"投票終了"}];
-    for (const mark of marks) { line(x(mark.date),top-15,x(mark.date),height-bottom+15,"#d3dcd5","4 5"); element("text",{x:x(mark.date),y:30,"text-anchor":"middle",fill:"#147b7d","font-size":12},formatDate(mark.date)); element("text",{x:x(mark.date),y:50,"text-anchor":"middle",fill:"#596670","font-size":11},mark.label); }
+    for (const mark of marks) {
+      line(x(mark.date),top-15,x(mark.date),height-bottom+15,"#d3dcd5","4 5");
+      const label = document.createElement("div");
+      label.className = "time-label";
+      if (mark.date === data.event.start) label.classList.add("time-label-start");
+      label.style.left = `${x(mark.date)}px`;
+      const date = document.createElement("span");
+      date.className = "time-date";
+      date.textContent = formatDate(mark.date);
+      const caption = document.createElement("span");
+      caption.className = "time-caption";
+      caption.textContent = mark.label;
+      label.append(date, caption);
+      timeAxis.append(label);
+    }
     let count = 0;
     const maps = data.announcements.map(a => new Map(a.status === "verified" ? a.ranks.map(r => [r.id,r.rank]) : []));
     const points = [];
