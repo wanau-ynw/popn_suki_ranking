@@ -35,8 +35,15 @@ if (typeof document !== "undefined") {
   const formatDate = date => new Intl.DateTimeFormat("ja-JP", { timeZone: "Asia/Tokyo", month: "numeric", day: "numeric" }).format(new Date(date));
   const imagePath = filename => filename.split("/").map(encodeURIComponent).join("/");
   const info = c => `${c.name}\n初登場：${c.version}\nおひさ：${c.ohisa ? "あり" : "なし"}`;
+  function rankHistory(c) {
+    return data.announcements.map(a => {
+      const rank = a.ranks.find(row => row.id === c.id)?.rank;
+      const value = a.status !== "verified" ? "データ未登録" : rank === undefined ? "順位未掲載" : `${rank}位`;
+      return `${formatDate(a.date)}：${value}`;
+    }).join("\n");
+  }
   function showTooltip(c, target) {
-    tooltip.textContent = info(c); tooltip.hidden = false;
+    tooltip.textContent = `${info(c)}\n\n順位の推移\n${rankHistory(c)}`; tooltip.hidden = false;
     const box = target.getBoundingClientRect();
     tooltip.style.left = `${Math.max(12, Math.min(box.left, innerWidth - tooltip.offsetWidth - 12))}px`;
     tooltip.style.top = `${Math.max(12, Math.min(box.bottom + 8, innerHeight - tooltip.offsetHeight - 12))}px`;
@@ -45,6 +52,11 @@ if (typeof document !== "undefined") {
   addEventListener("scroll", hideTooltip, true);
   addEventListener("resize", hideTooltip);
   addEventListener("keydown", e => { if (e.key === "Escape") hideTooltip(); });
+  addEventListener("click", e => {
+    if (selected === null || e.target.closest?.(".chart-icon, .character")) return;
+    selected = null;
+    render();
+  });
   function icon(c, className) {
     const button = document.createElement("button");
     button.className = className + (selected === c.id ? " selected" : "");
