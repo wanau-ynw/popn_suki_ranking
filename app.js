@@ -9,18 +9,24 @@ function validateData(characters, data) {
   }
   const start = Date.parse(data.event?.start), end = Date.parse(data.event?.end);
   if (!Number.isFinite(start) || !Number.isFinite(end) || start >= end || !Array.isArray(data.announcements)) throw new Error("開催期間または発表データが不正です。");
-  let previous = -Infinity;
+  let previous = -Infinity, previousCutoff = -Infinity;
   for (const a of data.announcements) {
     const date = Date.parse(a.date);
     if (!Number.isFinite(date) || date < start || date <= previous || typeof a.label !== "string" || !["pending", "verified"].includes(a.status) || !Number.isInteger(a.expectedCount) || a.expectedCount < 1 || !Array.isArray(a.ranks)) throw new Error("発表日の順序・状態・件数が不正です。");
     previous = date;
+    const cutoff = Date.parse(a.cutoffDate);
+    if (!Number.isFinite(cutoff) || cutoff < start || cutoff > end || cutoff > date || cutoff <= previousCutoff) throw new Error(`${a.label}の集計日または集計日の順序が不正です。`);
+    previousCutoff = cutoff;
+    const rankLimit = a.rankLimit ?? a.expectedCount, topCount = a.topCount ?? a.expectedCount;
+    if (!Number.isInteger(rankLimit) || !Number.isInteger(topCount) || topCount < 1 || topCount > a.expectedCount || rankLimit < topCount) throw new Error(`${a.label}の順位上限または上位発表件数が不正です。`);
     const seen = new Set();
     for (const row of a.ranks) {
-      if (!ids.has(row.id) || seen.has(row.id) || !Number.isInteger(row.rank) || row.rank < 1 || row.rank > a.expectedCount) throw new Error(`${a.label}のキャラIDまたは順位が不正です。`);
+      if (!ids.has(row.id) || seen.has(row.id) || !Number.isInteger(row.rank) || row.rank < 1 || row.rank > rankLimit) throw new Error(`${a.label}のキャラIDまたは順位が不正です。`);
       seen.add(row.id);
     }
     if (a.status === "pending" && a.ranks.length) throw new Error("未登録の発表に順位が含まれています。");
     if (a.status === "verified" && a.ranks.length !== a.expectedCount) throw new Error(`${a.label}の登録件数が予定件数と一致しません。`);
+    if (a.status === "verified" && new Set(a.ranks.filter(row => row.rank <= topCount).map(row => row.rank)).size !== topCount) throw new Error(`${a.label}の上位発表範囲に順位の欠落があります。`);
     if (!/^https:\/\//.test(a.source) || !/^https:\/\//.test(data.event.source)) throw new Error("出典URLが不正です。");
   }
   return data;
@@ -39,7 +45,7 @@ if (typeof document !== "undefined") {
     return data.announcements.map(a => {
       const rank = a.ranks.find(row => row.id === c.id)?.rank;
       const value = a.status !== "verified" ? "データ未登録" : rank === undefined ? "順位未掲載" : `${rank}位`;
-      return `${formatDate(a.date)}：${value}`;
+      return `${formatDate(a.cutoffDate)}集計：${value}`;
     }).join("\n");
   }
   function showTooltip(c, target) {
@@ -76,8 +82,11 @@ if (typeof document !== "undefined") {
   function updateStatus() {
     const pending = data.announcements.filter(a => a.status === "pending");
     const latest = data.announcements.at(-1);
-    const limited = latest?.status === "verified" && data.announcements.some(a => a.status === "verified" && a.expectedCount > latest.expectedCount);
-    $("status").textContent = (limited ? `${formatDate(latest.date)} ${latest.label}は1〜${latest.expectedCount}位のみの発表です。今回順位が掲載されていないキャラの過去の順位はグラフで確認できます。` : "") + (pending.length ? `${pending.map(a => `${formatDate(a.date)} ${a.label}`).join("、")}の順位データは未登録です。現在のひろばには順位未確認のキャラも含まれます。` : "") + (imageErrors.size ? ` ⚠ アイコン読み込み失敗：${imageErrors.size}件。再読み込みしても直らない場合はキャラ名を管理者にお知らせください。` : "");
+    const topCount = latest?.topCount ?? latest?.expectedCount;
+    const pickupCount = latest?.ranks.filter(row => row.rank > topCount).length || 0;
+    const limited = latest?.status === "verified" && (pickupCount > 0 || data.announcements.some(a => a.status === "verified" && (a.topCount ?? a.expectedCount) > topCount));
+    const coverage = pickupCount ? `上位${topCount}位＋ピックアップ${pickupCount}キャラ` : `1〜${topCount}位のみ`;
+    $("status").textContent = (limited ? `${formatDate(latest.date)} ${latest.label}は${coverage}の発表です。今回順位が掲載されていないキャラの過去の順位はグラフで確認できます。` : "") + (pending.length ? `${pending.map(a => `${formatDate(a.date)} ${a.label}`).join("、")}の順位データは未登録です。現在のひろばには順位未確認のキャラも含まれます。` : "") + (imageErrors.size ? ` ⚠ アイコン読み込み失敗：${imageErrors.size}件。再読み込みしても直らない場合はキャラ名を管理者にお知らせください。` : "");
     $("status").hidden = !$("status").textContent;
   }
   function render() {
@@ -120,7 +129,7 @@ if (typeof document !== "undefined") {
     const timeAxis = document.createElement("div");
     timeAxis.className = "time-axis";
     chart.append(timeAxis, rankAxis);
-    const marks = [{date:data.event.start,label:"スタート"},...data.announcements,{date:data.event.end,label:"投票終了"}];
+    const marks = [{date:data.event.start,label:"スタート"},...data.announcements.map(a => ({date:a.cutoffDate,label:a.label,cutoff:true})),{date:data.event.end,label:"投票終了"}];
     for (const mark of marks) {
       line(x(mark.date),top-15,x(mark.date),height-bottom+15,"#d3dcd5","4 5");
       const label = document.createElement("div");
@@ -129,7 +138,7 @@ if (typeof document !== "undefined") {
       label.style.left = `${x(mark.date)}px`;
       const date = document.createElement("span");
       date.className = "time-date";
-      date.textContent = formatDate(mark.date);
+      date.textContent = `${formatDate(mark.date)}${mark.cutoff ? "集計" : ""}`;
       const caption = document.createElement("span");
       caption.className = "time-caption";
       caption.textContent = mark.label;
@@ -145,7 +154,7 @@ if (typeof document !== "undefined") {
       const color = selected === c.id ? "#db466e" : selected ? "#dae3df" : "#72a7a3";
       maps.forEach((map, i) => {
         const rank = map.get(c.id), prior = maps[i-1]?.get(c.id);
-        if (rank !== undefined && prior !== undefined) { const path = line(x(data.announcements[i-1].date),y(prior),x(data.announcements[i].date),y(rank),color); path.setAttribute("clip-path","url(#plot-clip)"); path.setAttribute("stroke-width",selected === c.id ? 3 : 1.5); }
+        if (rank !== undefined && prior !== undefined) { const path = line(x(data.announcements[i-1].cutoffDate),y(prior),x(data.announcements[i].cutoffDate),y(rank),color); path.setAttribute("clip-path","url(#plot-clip)"); path.setAttribute("stroke-width",selected === c.id ? 3 : 1.5); }
         if (rank >= low && rank <= high) { hasPoint = true; points.push({c,i,rank}); }
       });
       if (hasPoint) count++;
@@ -154,14 +163,14 @@ if (typeof document !== "undefined") {
     for (const {c,i,rank} of points) {
       const key = `${i}:${rank}`, offset = overlaps.get(key) || 0; overlaps.set(key,offset+1);
       const button = icon(c,"chart-icon"); if (selected && selected !== c.id) button.classList.add("dim");
-      button.style.left = `${x(data.announcements[i].date)+offset*36}px`; button.style.top = `${y(rank)}px`;
+      button.style.left = `${x(data.announcements[i].cutoffDate)+offset*36}px`; button.style.top = `${y(rank)}px`;
       if (i === data.announcements.length - 1) {
         const name = document.createElement("span");
         name.className = "chart-name";
         name.textContent = c.name;
         button.append(name);
       }
-      button.setAttribute("aria-label",`${info(c)}\n${data.announcements[i].label}：${rank}位`); chart.append(button);
+      button.setAttribute("aria-label",`${info(c)}\n${data.announcements[i].label}（${formatDate(data.announcements[i].cutoffDate)}集計）：${rank}位`); chart.append(button);
     }
     $("chart-count").textContent = `${count}キャラ表示`;
     if (!points.length) element("text",{x:width/2,y:80,"text-anchor":"middle",fill:"#94602c","font-size":13},"この条件で表示できる順位データはありません");
