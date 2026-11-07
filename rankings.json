@@ -4842,6 +4842,135 @@
           "rank": 300
         }
       ]
+    },
+    {
+      "date": "2026-11-07T00:00:00+09:00",
+      "label": "第5回中間発表",
+      "source": "https://x.com/popn_team/status/2118882671451672611",
+      "expectedCount": 30,
+      "status": "verified",
+      "ranks": [
+        {
+          "id": ".uk7ze0",
+          "rank": 1
+        },
+        {
+          "id": ".uivvfs",
+          "rank": 2
+        },
+        {
+          "id": ".uk7mqw",
+          "rank": 3
+        },
+        {
+          "id": ".uiwb8o",
+          "rank": 4
+        },
+        {
+          "id": ".ujsvs8",
+          "rank": 5
+        },
+        {
+          "id": ".uk1814",
+          "rank": 6
+        },
+        {
+          "id": ".uiweeg",
+          "rank": 7
+        },
+        {
+          "id": ".uk8f6w",
+          "rank": 8
+        },
+        {
+          "id": ".ujpt60",
+          "rank": 9
+        },
+        {
+          "id": ".uj7q3s",
+          "rank": 10
+        },
+        {
+          "id": ".uivsa0",
+          "rank": 11
+        },
+        {
+          "id": ".ukg5bc",
+          "rank": 12
+        },
+        {
+          "id": ".uizap4",
+          "rank": 13
+        },
+        {
+          "id": ".uk0lwo",
+          "rank": 14
+        },
+        {
+          "id": ".uiwnvs",
+          "rank": 15
+        },
+        {
+          "id": ".uivlyg",
+          "rank": 16
+        },
+        {
+          "id": ".ujvffs",
+          "rank": 17
+        },
+        {
+          "id": ".ukfmco",
+          "rank": 18
+        },
+        {
+          "id": ".uj3c2w",
+          "rank": 19
+        },
+        {
+          "id": ".ujf9wo",
+          "rank": 20
+        },
+        {
+          "id": ".uivfmw",
+          "rank": 21
+        },
+        {
+          "id": ".ujgxyg",
+          "rank": 22
+        },
+        {
+          "id": ".ukam7c",
+          "rank": 23
+        },
+        {
+          "id": ".uiv65k",
+          "rank": 24
+        },
+        {
+          "id": ".uk8c14",
+          "rank": 25
+        },
+        {
+          "id": ".ukgbmw",
+          "rank": 26
+        },
+        {
+          "id": ".uiwkq0",
+          "rank": 27
+        },
+        {
+          "id": ".ukbrag",
+          "rank": 28
+        },
+        {
+          "id": ".uk3roo",
+          "rank": 29
+        },
+        {
+          "id": ".uiw1rc",
+          "rank": 30
+        }
+      ]
     }
   ]
 }

@@ -75,7 +75,9 @@ if (typeof document !== "undefined") {
   }
   function updateStatus() {
     const pending = data.announcements.filter(a => a.status === "pending");
-    $("status").textContent = (pending.length ? `${pending.map(a => `${formatDate(a.date)} ${a.label}`).join("、")}の順位データは未登録です。現在のひろばには順位未確認のキャラも含まれます。` : "") + (imageErrors.size ? ` ⚠ アイコン読み込み失敗：${imageErrors.size}件。再読み込みしても直らない場合はキャラ名を管理者にお知らせください。` : "");
+    const latest = data.announcements.at(-1);
+    const limited = latest?.status === "verified" && data.announcements.some(a => a.status === "verified" && a.expectedCount > latest.expectedCount);
+    $("status").textContent = (limited ? `${formatDate(latest.date)} ${latest.label}は1〜${latest.expectedCount}位のみの発表です。今回順位が掲載されていないキャラの過去の順位はグラフで確認できます。` : "") + (pending.length ? `${pending.map(a => `${formatDate(a.date)} ${a.label}`).join("、")}の順位データは未登録です。現在のひろばには順位未確認のキャラも含まれます。` : "") + (imageErrors.size ? ` ⚠ アイコン読み込み失敗：${imageErrors.size}件。再読み込みしても直らない場合はキャラ名を管理者にお知らせください。` : "");
     $("status").hidden = !$("status").textContent;
   }
   function render() {
@@ -157,7 +159,6 @@ if (typeof document !== "undefined") {
         const name = document.createElement("span");
         name.className = "chart-name";
         name.textContent = c.name;
-        if (x(data.announcements[i].date) > width / 2) name.classList.add("chart-name-left");
         button.append(name);
       }
       button.setAttribute("aria-label",`${info(c)}\n${data.announcements[i].label}：${rank}位`); chart.append(button);
@@ -167,7 +168,7 @@ if (typeof document !== "undefined") {
   }
   async function init() {
     try {
-      const results = await Promise.all(["characters.json","rankings.json"].map(async path => { const response = await fetch(path); if (!response.ok) throw new Error(`${path}を取得できません（HTTP ${response.status}）。`); return response.json(); }));
+      const results = await Promise.all(["characters.json","rankings.json"].map(async path => { const response = await fetch(path, { cache: "no-cache" }); if (!response.ok) throw new Error(`${path}を取得できません（HTTP ${response.status}）。`); return response.json(); }));
       characters = results[0].characters; data = validateData(characters,results[1]);
       const versions = new Map(characters.map(c => [c.version_id,c.version]));
       for (const [value,name] of versions) { const option = document.createElement("option"); option.value = value; option.textContent = name; $("version").append(option); }
