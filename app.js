@@ -19,6 +19,7 @@ function validateData(characters, data) {
     previousCutoff = cutoff;
     const rankLimit = a.rankLimit ?? a.expectedCount, topCount = a.topCount ?? a.expectedCount;
     if (!Number.isInteger(rankLimit) || !Number.isInteger(topCount) || topCount < 1 || topCount > a.expectedCount || rankLimit < topCount) throw new Error(`${a.label}の順位上限または上位発表件数が不正です。`);
+    if (a.partial !== undefined && typeof a.partial !== "boolean") throw new Error(`${a.label}の部分発表の設定が不正です。`);
     const seen = new Set();
     for (const row of a.ranks) {
       if (!ids.has(row.id) || seen.has(row.id) || !Number.isInteger(row.rank) || row.rank < 1 || row.rank > rankLimit) throw new Error(`${a.label}のキャラIDまたは順位が不正です。`);
@@ -151,10 +152,19 @@ if (typeof document !== "undefined") {
     const defs = element("defs",{}), clip = document.createElementNS(ns,"clipPath"); clip.id = "plot-clip"; const rect = document.createElementNS(ns,"rect"); for (const [k,v] of Object.entries({x:left,y:top-18,width:width-left-right,height:height-top-bottom+36})) rect.setAttribute(k,v); clip.append(rect); defs.append(clip);
     for (const c of visible) {
       let hasPoint = false;
+      let previous = null;
       const color = selected === c.id ? "#db466e" : selected ? "#dae3df" : "#72a7a3";
       maps.forEach((map, i) => {
-        const rank = map.get(c.id), prior = maps[i-1]?.get(c.id);
-        if (rank !== undefined && prior !== undefined) { const path = line(x(data.announcements[i-1].cutoffDate),y(prior),x(data.announcements[i].cutoffDate),y(rank),color); path.setAttribute("clip-path","url(#plot-clip)"); path.setAttribute("stroke-width",selected === c.id ? 3 : 1.5); }
+        const rank = map.get(c.id);
+        if (rank === undefined) {
+          if (data.announcements[i].status !== "verified" || !data.announcements[i].partial) previous = null;
+          return;
+        }
+        if (previous) {
+          const path = line(x(data.announcements[previous.index].cutoffDate),y(previous.rank),x(data.announcements[i].cutoffDate),y(rank),color,i > previous.index + 1 ? "6 5" : "");
+          path.setAttribute("clip-path","url(#plot-clip)"); path.setAttribute("stroke-width",selected === c.id ? 3 : 1.5);
+        }
+        previous = {index:i,rank};
         if (rank >= low && rank <= high) { hasPoint = true; points.push({c,i,rank}); }
       });
       if (hasPoint) count++;
