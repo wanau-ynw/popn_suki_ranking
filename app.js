@@ -39,6 +39,16 @@ if (typeof document !== "undefined") {
   const $ = id => document.getElementById(id);
   let characters = [], data, selected = null, imageErrors = new Set();
   const tooltip = $("tooltip");
+  let tooltipAnchor = null;
+  let tooltipScrollOrigins = [], tooltipPosition = null;
+  const scrollOffset = () => tooltipScrollOrigins.reduce((offset, origin) => ({
+    x: offset.x + origin.element.scrollLeft - origin.left,
+    y: offset.y + origin.element.scrollTop - origin.top
+  }), { x: 0, y: 0 });
+  const selectedTooltipTarget = { getBoundingClientRect: () => {
+    const offset = scrollOffset();
+    return { left: tooltipAnchor.left - offset.x, bottom: tooltipAnchor.bottom - offset.y };
+  } };
   const formatDate = date => new Intl.DateTimeFormat("ja-JP", { timeZone: "Asia/Tokyo", month: "numeric", day: "numeric" }).format(new Date(date));
   const imagePath = filename => filename.split("/").map(encodeURIComponent).join("/");
   const info = c => `${c.name}\n初登場：${c.version}\nおひさ：${c.ohisa ? "あり" : "なし"}`;
@@ -50,15 +60,34 @@ if (typeof document !== "undefined") {
     }).join("\n");
   }
   function showTooltip(c, target) {
+    if (selected !== null && selected !== c.id) return;
     tooltip.textContent = `${info(c)}\n\n順位の推移\n${rankHistory(c)}`; tooltip.hidden = false;
     const box = target.getBoundingClientRect();
     tooltip.style.left = `${Math.max(12, Math.min(box.left, innerWidth - tooltip.offsetWidth - 12))}px`;
     tooltip.style.top = `${Math.max(12, Math.min(box.bottom + 8, innerHeight - tooltip.offsetHeight - 12))}px`;
+    if (selected !== null) tooltipPosition = {
+      left: parseFloat(tooltip.style.left), top: parseFloat(tooltip.style.top), offset: scrollOffset()
+    };
   }
-  function hideTooltip() { tooltip.hidden = true; }
-  addEventListener("scroll", hideTooltip, true);
-  addEventListener("resize", hideTooltip);
-  addEventListener("keydown", e => { if (e.key === "Escape") hideTooltip(); });
+  function hideTooltip() { if (selected === null) tooltip.hidden = true; }
+  addEventListener("scroll", () => {
+    if (selected === null) return hideTooltip();
+    if (!tooltipPosition) return;
+    const offset = scrollOffset();
+    tooltip.style.left = `${tooltipPosition.left - offset.x + tooltipPosition.offset.x}px`;
+    tooltip.style.top = `${tooltipPosition.top - offset.y + tooltipPosition.offset.y}px`;
+  }, true);
+  addEventListener("resize", () => {
+    const chosen = characters.find(c => c.id === selected);
+    if (chosen) showTooltip(chosen, selectedTooltipTarget);
+    else hideTooltip();
+  });
+  addEventListener("keydown", e => {
+    if (e.key !== "Escape") return;
+    selected = null;
+    if (data) render();
+    else hideTooltip();
+  });
   addEventListener("click", e => {
     if (selected === null || e.target.closest?.(".chart-icon, .character")) return;
     selected = null;
@@ -77,7 +106,15 @@ if (typeof document !== "undefined") {
     button.addEventListener("pointerleave", hideTooltip);
     button.addEventListener("focus", () => showTooltip(c, button));
     button.addEventListener("blur", hideTooltip);
-    button.addEventListener("click", () => { selected = selected === c.id ? null : c.id; hideTooltip(); render(); });
+    button.addEventListener("click", () => {
+      tooltipAnchor = button.getBoundingClientRect();
+      tooltipScrollOrigins = [];
+      for (let element = button.parentElement; element; element = element.parentElement) {
+        tooltipScrollOrigins.push({ element, left: element.scrollLeft, top: element.scrollTop });
+      }
+      selected = selected === c.id ? null : c.id;
+      render();
+    });
     return button;
   }
   function updateStatus() {
@@ -103,6 +140,7 @@ if (typeof document !== "undefined") {
     const chosen = characters.find(c => c.id === selected);
     $("selection").textContent = chosen ? `${info(chosen).replaceAll("\n", " ｜ ")} ｜ 最新：${latestRanks.has(chosen.id) ? `${latestRanks.get(chosen.id)}位` : "順位未確認"}${visible.includes(chosen) ? "" : "（現在のフィルタ対象外）"}` : "気になるキャラを選んでみよう。";
     drawChart(visible);
+    if (chosen) showTooltip(chosen, selectedTooltipTarget);
   }
   function drawChart(visible) {
     const [low, high] = $("band").value.split(":").map(Number);
